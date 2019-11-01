@@ -12,6 +12,7 @@ class Directions(Enum):
     def random_direction():
         return rd.choice([Directions.North, Directions.East, Directions.South, Directions.West])
 
+
 class Status(Enum):
     Dead = 0
     Alive = 1
@@ -35,7 +36,6 @@ class Sheep(object):
     def update(self):
         if self.status == Status.Alive:
             direction = Directions.random_direction()
-            print(direction)
             if direction == Directions.North:
                 self.coordinates[1] += self.sheep_move_dist
             elif direction == Directions.South:
