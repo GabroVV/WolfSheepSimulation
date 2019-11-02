@@ -32,7 +32,7 @@ class Sheep(object):
 
     def die(self):
         self.status = Status.Dead
-        print("Sheep",end="")
+        print("Sheep", end="")
         print(self.index, end=" ")
         print("got eaten by wolf")
 

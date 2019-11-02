@@ -20,7 +20,7 @@ class Wolf(object):
         for i in range(len(self.sheep_list)):
             if self.sheep_list[i].status == Sheep.Status.Alive:
                 return i
-        return len(self.sheep_list)                                 ##returns a dead sheep index if all sheep are dead
+        return len(self.sheep_list)  # returns a dead sheep index if all sheep are dead
 
     def find_closest_sheep(self):
         closest_sheep_index = self.first_alive_sheep_index()
