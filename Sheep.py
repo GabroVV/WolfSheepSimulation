@@ -1,21 +1,6 @@
 import random as rd
-from enum import Enum
-
-
-class Directions(Enum):
-    North = 0
-    East = 1
-    South = 2
-    West = 3
-
-    @staticmethod
-    def random_direction():
-        return rd.choice([Directions.North, Directions.East, Directions.South, Directions.West])
-
-
-class Status(Enum):
-    Dead = 0
-    Alive = 1
+from Enums import Directions
+from Enums import Status
 
 
 class Sheep(object):
@@ -45,6 +30,11 @@ class Sheep(object):
             elif direction == Directions.East:
                 self.coordinates[0] += self.sheep_move_dist
 
+    def die(self):
+        self.status = Status.Dead
+        print("Sheep",end="")
+        print(self.index, end=" ")
+        print("got eaten by wolf")
 
 
 
