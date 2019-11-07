@@ -1,5 +1,5 @@
 import csv
-
+import json
 
 class FileOperations:
 
@@ -14,3 +14,16 @@ class FileOperations:
         with open('alive.csv', 'a', newline='') as csvfile:
             csvwriter = csv.writer(csvfile)
             csvwriter.writerow(list)
+
+    @staticmethod
+    def create_json():
+        with open('pos.json', 'w') as file:
+            file.close()
+
+
+
+
+    @staticmethod
+    def append_to_json(dictionary):
+        with open('pos.json', 'a') as file:
+            json.dump(dictionary,file,indent=True)
