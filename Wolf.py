@@ -43,8 +43,8 @@ class Wolf(object):
     def move_towards_sheep(self, sheep):
         vector = [sheep.coordinates[0] - self.coordinates[0], sheep.coordinates[1] - self.coordinates[1]]
         length = math.sqrt(vector[0]*vector[0] + vector[1]*vector[1])
-        self.coordinates[0] += vector[0]/length
-        self.coordinates[1] += vector[1]/length
+        self.coordinates[0] += self.wolf_move_dist*vector[0]/length
+        self.coordinates[1] += self.wolf_move_dist*vector[1]/length
 
 
 
