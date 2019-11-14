@@ -16,8 +16,10 @@ class Simulation(object):
         self.turn = 1
         self.list_with_dictionaries = []
         self.dictionary = {}
+        self.jsonDictionary = {"rounds": []}
+
         FileOperations.create_csv()
-        FileOperations.create_json()
+        FileOperations.create_json(self.jsonDictionary)
 
     def simulate(self):
         for i in range(0, self.sheep_count):
@@ -31,6 +33,7 @@ class Simulation(object):
             self.create_dictionary()
             FileOperations.append_to_json(self.dictionary)
             self.turn += 1
+        FileOperations.delete_last_coma(self)
 
     def count_alive_sheep(self):
         count = 0
@@ -49,6 +52,7 @@ class Simulation(object):
             else:
                 temp_list.append(None)
         self.dictionary["sheep_pos"] = temp_list
+
 
 
 
@@ -72,7 +76,7 @@ class Simulation(object):
 
 
 if __name__ == "__main__":
-    sim = Simulation(50, 15, 0.5, 1.0, 10)
+    sim = Simulation(2, 15, 0.5, 1.0, 10)
     sim.simulate()
 
 
