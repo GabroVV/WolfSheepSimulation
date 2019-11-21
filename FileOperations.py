@@ -19,16 +19,7 @@ class FileOperations:
     @staticmethod
     def create_json(list):
         with open('pos.json', 'w') as file:
-            json.dump(list, file, indent=1)
-
-    @staticmethod
-    def append_to_json(dictionary):
-        with open('pos.json', 'a') as file:
-            file.seek(0, 2)
-            size = file.tell()
-            file.truncate(size-4)
-            file.write(json.dumps(dictionary, indent=True))
-            file.write(",]}  ")
+            json.dump(list, file, indent=True)
 
     @staticmethod
     def delete_last_coma(self):
@@ -37,3 +28,7 @@ class FileOperations:
             size = file.tell()
             file.truncate(size-5)
             file.write("]}  ")
+
+    @staticmethod
+    def append_dictionary_to_list(list = [],dictionary = {}):
+        list.append(dictionary)

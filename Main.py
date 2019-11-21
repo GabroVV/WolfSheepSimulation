@@ -2,7 +2,7 @@ from Sheep import Sheep
 from Wolf import Wolf
 from Enums import Status
 from FileOperations import FileOperations
-
+import argparse
 
 class Simulation(object):
     def __init__(self, turns, sheep_count, sheep_speed, wolf_speed, limit):
@@ -16,10 +16,11 @@ class Simulation(object):
         self.turn = 1
         self.list_with_dictionaries = []
         self.dictionary = {}
-        self.jsonDictionary = {"rounds": []}
+
+
 
         FileOperations.create_csv()
-        FileOperations.create_json(self.jsonDictionary)
+
 
     def simulate(self):
         for i in range(0, self.sheep_count):
@@ -31,9 +32,10 @@ class Simulation(object):
             self.display()
             FileOperations.append_to_csv([self.turn,self.count_alive_sheep()])
             self.create_dictionary()
-            FileOperations.append_to_json(self.dictionary)
+            FileOperations.append_dictionary_to_list(self.list_with_dictionaries,self.dictionary)
+
             self.turn += 1
-        FileOperations.delete_last_coma(self)
+        FileOperations.create_json(self.list_with_dictionaries)
 
     def count_alive_sheep(self):
         count = 0
