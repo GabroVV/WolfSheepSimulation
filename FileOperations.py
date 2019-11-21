@@ -1,6 +1,6 @@
 import csv
 import json
-import os
+
 
 class FileOperations:
 
@@ -19,23 +19,21 @@ class FileOperations:
     @staticmethod
     def create_json(list):
         with open('pos.json', 'w') as file:
-            json.dump(list,file,indent=1)
+            json.dump(list, file, indent=1)
 
     @staticmethod
     def append_to_json(dictionary):
         with open('pos.json', 'a') as file:
-            file.seek(0,2)
-            size=file.tell()
+            file.seek(0, 2)
+            size = file.tell()
             file.truncate(size-4)
-            file.write(json.dumps(dictionary,indent=True))
+            file.write(json.dumps(dictionary, indent=True))
             file.write(",]}  ")
-
-        print(dictionary)
 
     @staticmethod
     def delete_last_coma(self):
         with open('pos.json', 'a') as file:
-            file.seek(0,2)
-            size=file.tell()
+            file.seek(0, 2)
+            size = file.tell()
             file.truncate(size-5)
             file.write("]}  ")

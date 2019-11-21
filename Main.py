@@ -53,17 +53,13 @@ class Simulation(object):
                 temp_list.append(None)
         self.dictionary["sheep_pos"] = temp_list
 
-
-
-
-
     def display(self):
-        print("Turn number:",end="")
+        print("Turn number:", end="")
         print(self.turn)
-        print("Wolf position:" , end="")
-        print(round(self.wolf.coordinates[0],3), end ='')
+        print("Wolf position:", end="")
+        print(round(self.wolf.coordinates[0], 3), end ='')
         print(" , ", end='')
-        print(round(self.wolf.coordinates[1],3))
+        print(round(self.wolf.coordinates[1], 3))
         print("Number of alive sheep:", end=' ')
         print(self.count_alive_sheep())
         print()
@@ -76,7 +72,7 @@ class Simulation(object):
 
 
 if __name__ == "__main__":
-    sim = Simulation(2, 15, 0.5, 1.0, 10)
+    sim = Simulation(50, 15, 0.5, 1.0, 10)
     sim.simulate()
 
 

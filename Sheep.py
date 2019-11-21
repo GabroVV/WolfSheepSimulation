@@ -30,7 +30,6 @@ class Sheep(object):
             elif direction == Directions.East:
                 self.coordinates[0] += self.sheep_move_dist
 
-
     def die(self):
         self.status = Status.Dead
         print("Sheep", end="")
