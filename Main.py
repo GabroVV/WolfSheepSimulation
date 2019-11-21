@@ -15,7 +15,6 @@ class Simulation(object):
         self.wolf = Wolf(wolf_speed, self.sheep_list)
         self.turn = 1
         self.list_with_dictionaries = []
-        self.dictionary = {}
 
 
 
@@ -31,8 +30,7 @@ class Simulation(object):
             self.wolf.update()
             self.display()
             FileOperations.append_to_csv([self.turn,self.count_alive_sheep()])
-            self.create_dictionary()
-            FileOperations.append_dictionary_to_list(self.list_with_dictionaries,self.dictionary)
+            FileOperations.append_dictionary_to_list(self.list_with_dictionaries,  self.create_dictionary())
 
             self.turn += 1
         FileOperations.create_json(self.list_with_dictionaries)
@@ -45,15 +43,15 @@ class Simulation(object):
         return count
 
     def create_dictionary(self):
-        self.dictionary["round_no"] = self.turn
-        self.dictionary["wolf_pos"] = [self.wolf.coordinates[0],self.wolf.coordinates[1]]
+        dictionary = {"round_no": self.turn, "wolf_pos": [self.wolf.coordinates[0], self.wolf.coordinates[1]]}
         temp_list=[]
         for sheep in self.sheep_list:
             if sheep.status==Status.Alive:
                 temp_list.append(sheep.coordinates)
             else:
                 temp_list.append(None)
-        self.dictionary["sheep_pos"] = temp_list
+        dictionary["sheep_pos"] = temp_list
+        return dictionary
 
     def display(self):
         print("Turn number:", end="")

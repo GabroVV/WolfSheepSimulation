@@ -45,10 +45,3 @@ class Wolf(object):
         length = math.sqrt(vector[0]*vector[0] + vector[1]*vector[1])
         self.coordinates[0] += self.wolf_move_dist*vector[0]/length
         self.coordinates[1] += self.wolf_move_dist*vector[1]/length
-
-
-
-
-
-
-
