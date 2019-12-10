@@ -9,7 +9,6 @@ def loadFromCSV(filename):
     return pd.read_csv(filename,names=paramnames, delimiter=',')
 
 if __name__ == "__main__":
-    print("Hello World")
     data = loadFromCSV('abalone.data')
     pd.set_option('display.max_columns', 5000)
     #print(data.values)
